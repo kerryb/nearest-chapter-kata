@@ -64,17 +64,14 @@ defmodule NearestChapter do
   ```
   """
   def find(chapters, page) do
-    chapters
-    |> find_nearest(page)
-    |> chapter_name()
-  end
-
-  defp find_nearest(chapters, page) do
     # sort by a tuple of <difference between page and chapter start> and
     # negative <chapter start>, so that ties are broken towards the larger page
     # number
-    Enum.min_by(chapters, fn {_name, start_page} -> {abs(start_page - page), -start_page} end)
+    with {name, _start_page} <-
+           Enum.min_by(chapters, fn {_name, start_page} ->
+             {abs(start_page - page), -start_page}
+           end) do
+      name
+    end
   end
-
-  defp chapter_name({name, _start_page}), do: name
 end
