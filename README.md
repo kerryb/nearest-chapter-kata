@@ -1,21 +1,37 @@
-# NearestChapter
+# Nearest Chapter
 
-**TODO: Add description**
+Create a function that returns which chapter is nearest to the page you're on.
+If two chapters are equidistant, return the chapter with the higher page
+number.
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `nearest_chapter` to your list of dependencies in `mix.exs`:
+## Examples
 
 ```elixir
-def deps do
-  [
-    {:nearest_chapter, "~> 0.1.0"}
-  ]
-end
+nearestChapter(%{
+  "Chapter 1" => 1,
+  "Chapter 2" => 15,
+  "Chapter 3" => 37
+}, 10) # => "Chapter 2"
+```
+ 
+ ```elixir
+nearestChapter(%{
+  "New Beginnings" => 1,
+  "Strange Developments" => 62,
+  "The End?" => 194,
+  "The True Ending" => 460
+}, 200) # => "The End?"
+```
+ 
+```elixir
+nearestChapter(%{
+  "Chapter 1a" => 1,
+  "Chapter 1b" => 5
+}, 3) # => "Chapter 1b"
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/nearest_chapter](https://hexdocs.pm/nearest_chapter).
+## Notes
 
+All page numbers in the dictionary will be valid integers.
+
+See `NearestChapter` for doctests.
