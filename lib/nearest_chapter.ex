@@ -1,7 +1,5 @@
 defmodule NearestChapter do
   @doc """
-  Hello world.
-
   ## Examples
 
   These are executable doctests, as usual. Which is weird, because I almost
